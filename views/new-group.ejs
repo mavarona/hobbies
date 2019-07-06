@@ -1,0 +1,37 @@
+<main class="contenedor contenedor-formularios no-padding">
+    <h1><%= namePage %></h1>
+
+    <form class="default-form" action="/new-group" method="POST" enctype="multipart/form-data">
+        <div class="campo">
+            <label for="name">Nombre</label>
+            <input type="text" name="name" placeholder="Nuevo Grupo">
+        </div>
+        <div class="campo descripcion">
+            <label>Descripción</label>
+            <div class="contenedor-editor">
+                <input type="hidden" id="x" name="description">
+                <trix-editor input="x"></trix-editor>
+            </div>
+        </div>
+        <div class="campo">
+            <label for="category">Categoría</label>
+            <select name="category">
+                <option value="" selected disabled>-- Elige una Categoría --</option>
+                <% categories.forEach( category =>{ %>
+                    <option value="<%= category.id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="campo">
+            <label for="img">Imagen</label>
+            <input type="file" name="img">
+        </div>
+        <div class="campo">
+            <label for="url">Sitio Web</label>
+            <input type="text" name="url" placeholder="Sitio Web">
+        </div>
+        <div class="campo enviar">
+            <input type="submit" value="Crear Grupo" class="btn btn-rosa">
+        </div>
+    </form>
+</main>

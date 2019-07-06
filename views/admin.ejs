@@ -1,0 +1,51 @@
+<main class="contenedor panel-administracion">
+    <h1><%= namePage %></h1>
+
+    <div class="contenedor-botones">
+        <a href="/new-group" class="btn btn-amarillo">Nuevo Grupo</a>
+        <a href="/new-hobbie" class="btn btn-azul">Nueva Metii</a>
+        <a href="/edit-profile" class="btn btn-rosa">Editar Perfil</a>
+        <a href="/image-profile" class="btn btn-amarillo">Imagen Perfil</a>
+    </div>
+
+    <div class="seccion-admin">
+        <h2>Tus Eventos</h2>
+        <ul>
+            <li>
+                <div class="informacion-admin">
+                    <p class="fecha">Miércoles, 3 Julio de 2019</p>
+                    <h3>E-Commerce Madrid</h3>
+                    <small>23 Asistentes</small>
+                </div>
+                <div class="acciones contenedor-botones">
+                    <a href="#" class="btn btn-verde">Editar</a>
+                    <a href="#" class="btn btn-azul2">Asistentes</a>
+                    <a href="#" class="btn btn-rojo">Eliminar</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="seccion-admin">
+        <h2>Tus Grupos</h2>
+        <% if (groups.length){ %>
+            <ul>
+                <% groups.forEach( group => { %>
+                <li>
+                    <div class="informacion-admin">
+                        <h3><%= group.name %></h3>
+                    </div>
+                    <div class="acciones contenedor-botones">
+                        <a href="/edit-group/<%= group.id %>" class="btn btn-verde">Editar</a>
+                        <a href="/image-group/<%= group.id %>" class="btn btn-azul2">Imagen</a>
+                        <a href="/delete-group/<%= group.id %>" class="btn btn-rojo">Eliminar</a>
+                    </div>
+                </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No tienes grupos creados</p>
+        <% } %>
+    </div>
+
+</main>

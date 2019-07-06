@@ -1,0 +1,31 @@
+{
+    "name": "hobbies",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon ./index.js"
+    },
+    "author": "mavlmac",
+    "license": "MIT",
+    "dependencies": {
+        "bcrypt-nodejs": "0.0.3",
+        "connect-flash": "^0.1.1",
+        "cookie-parser": "^1.4.4",
+        "dotenv": "^8.0.0",
+        "ejs": "^2.6.2",
+        "express": "^4.17.1",
+        "express-ejs-layouts": "^2.5.0",
+        "express-session": "^1.16.2",
+        "express-validator": "^6.1.1",
+        "multer": "^1.4.1",
+        "nodemailer": "^6.2.1",
+        "nodemon": "^1.19.1",
+        "passport": "^0.4.0",
+        "passport-local": "^1.0.0",
+        "pg": "^7.11.0",
+        "sequelize": "^5.9.2",
+        "shortid": "^2.2.14",
+        "uuid": "^3.3.2"
+    }
+}
