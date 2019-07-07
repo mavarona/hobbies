@@ -9,21 +9,29 @@
     </div>
 
     <div class="seccion-admin">
-        <h2>Tus Eventos</h2>
-        <ul>
-            <li>
-                <div class="informacion-admin">
-                    <p class="fecha">Miércoles, 3 Julio de 2019</p>
-                    <h3>E-Commerce Madrid</h3>
-                    <small>23 Asistentes</small>
-                </div>
-                <div class="acciones contenedor-botones">
-                    <a href="#" class="btn btn-verde">Editar</a>
-                    <a href="#" class="btn btn-azul2">Asistentes</a>
-                    <a href="#" class="btn btn-rojo">Eliminar</a>
-                </div>
-            </li>
-        </ul>
+        <h2>Próximos Eventos</h2>
+        <% if (meeti.length > 0){ %>
+            <ul>
+                <% meeti.forEach(meet => { %>
+                    <li>
+                        <div class="informacion-admin">
+                            <% moment.locale('es') %>
+                            <% const date = meet.date +' '+ meet.hour; %>
+                            <p class="fecha"><%= moment(date).format('LLLL') %></p>
+                            <h3><%= meet.title %></h3>
+                            <small><%= meet.interested.length %> Interesados</small>
+                        </div>
+                        <div class="acciones contenedor-botones">
+                            <a href="/edit-meeti/<%= meet.id %>" class="btn btn-verde">Editar</a>
+                            <a href="/interested-meeti/<%= meet.id %>" class="btn btn-azul2">Asistentes</a>
+                            <a href="/delete-meeti/<%= meet.id %>" class="btn btn-rojo">Eliminar</a>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>Aún no tienes meeti's creados</p>
+        <% } %>
     </div>
 
     <div class="seccion-admin">
@@ -45,6 +53,32 @@
             </ul>
         <% } else { %>
             <p>No tienes grupos creados</p>
+        <% } %>
+    </div>
+
+        <div class="seccion-admin">
+        <h2>Eventos Pasados</h2>
+        <% if (previous.length > 0){ %>
+            <ul>
+                <% previous.forEach(meet => { %>
+                    <li>
+                        <div class="informacion-admin">
+                            <% moment.locale('es') %>
+                            <% const date = meet.date +' '+ meet.hour; %>
+                            <p class="fecha"><%= moment(date).format('LLLL') %></p>
+                            <h3><%= meet.title %></h3>
+                            <small><%= meet.interested.length %> Interesados</small>
+                        </div>
+                        <div class="acciones contenedor-botones">
+                            <a href="/edit-meeti/<%= meet.id %>" class="btn btn-verde">Editar</a>
+                            <a href="/interested-meeti/<%= meet.id %>" class="btn btn-azul2">Asistentes</a>
+                            <a href="/delete-meeti/<%= meet.id %>" class="btn btn-rojo">Eliminar</a>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No hay aún eventos pasados</p>
         <% } %>
     </div>
 

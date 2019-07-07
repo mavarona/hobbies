@@ -44,6 +44,22 @@ module.exports = function() {
     router.post('/delete-group/:groupId', authController.isAuthenticated, groupController.deleteGroup);
 
     router.get('/new-meeti', authController.isAuthenticated, meetiController.formNewMeeti);
+    router.post('/new-meeti', authController.isAuthenticated, [
+        check('title').trim().escape(),
+        check('invited').trim().escape(),
+        check('cupo').trim().escape(),
+        check('date').trim().escape(),
+        check('hour').trim().escape(),
+        check('address').trim().escape(),
+        check('city').trim().escape(),
+        check('state').trim().escape(),
+        check('country').trim().escape(),
+        check('lat').trim().escape(),
+        check('lng').trim().escape(),
+        check('groupId').trim().escape()
+    ], meetiController.createMeeti);
+
+    router.get('/edit-meeti/:id', authController.isAuthenticated, meetiController.formEditMeeti)
 
     return router;
 }

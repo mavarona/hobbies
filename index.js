@@ -12,6 +12,7 @@ const db = require('./config/db');
 require('./models/Users');
 require('./models/Categories');
 require('./models/Groups');
+require('./models/Meeti');
 db.sync().then(() => console.log('DB Connected')).catch((err) => console.log(err));
 
 require('dotenv').config({
