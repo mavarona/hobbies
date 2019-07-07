@@ -9,6 +9,7 @@ const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const adminController = require('../controllers/adminController');
 const groupController = require('../controllers/groupsController');
+const meetiController = require('../controllers/meetiController');
 
 module.exports = function() {
     router.get('/', homeController.home);
@@ -39,7 +40,10 @@ module.exports = function() {
     ], groupController.editGroup);
     router.get('/image-group/:groupId', authController.isAuthenticated, groupController.formImageGroup);
     router.post('/image-group/:groupId', authController.isAuthenticated, groupController.uploadImage, groupController.imageGroup);
+    router.get('/delete-group/:groupId', authController.isAuthenticated, groupController.formDeleteGroup);
+    router.post('/delete-group/:groupId', authController.isAuthenticated, groupController.deleteGroup);
 
+    router.get('/new-meeti', authController.isAuthenticated, meetiController.formNewMeeti);
 
     return router;
 }
