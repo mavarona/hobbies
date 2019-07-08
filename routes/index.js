@@ -59,7 +59,12 @@ module.exports = function() {
         check('groupId').trim().escape()
     ], meetiController.createMeeti);
 
-    router.get('/edit-meeti/:id', authController.isAuthenticated, meetiController.formEditMeeti)
+    router.get('/edit-meeti/:id', authController.isAuthenticated, meetiController.formEditMeeti);
+    router.post('/edit-meeti/:id', authController.isAuthenticated, meetiController.editMeeti)
+
+    router.get('/delete-meeti/:id', authController.isAuthenticated, meetiController.formDeleteMeeti);
+    router.post('/delete-meeti/:id', authController.isAuthenticated, meetiController.deleteMeeti);
+
 
     return router;
 }

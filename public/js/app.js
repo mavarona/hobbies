@@ -2,10 +2,19 @@ import {
     OpenStreetMapProvider
 } from 'leaflet-geosearch';
 import openStreetMapProvider from 'leaflet-geosearch/lib/providers/openStreetMapProvider';
+let lat = '40.518306431151785';
+let lng = '-3.7778825438677845';
+let address = '';
 
-const lat = document.querySelector('#lat').value || 40.518306431151785;
-const lng = document.querySelector('#lng').value || -3.7778825438677845;
-const address = document.querySelector('#address').value || '';
+if(document.querySelector('#lat')){
+    lat = document.querySelector('#lat').value || 40.518306431151785;
+}
+if(document.querySelector('#lng')){
+    lat = document.querySelector('#lng').value || -3.7778825438677845;
+}
+if(document.querySelector('#address')){
+    address = document.querySelector('#address').value || '';
+}
 
 const map = L.map('mapid').setView([lat, lng], 15);
 let markers = new L.FeatureGroup().addTo(map);
