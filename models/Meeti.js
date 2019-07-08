@@ -55,6 +55,7 @@ const Meeti = db.define('meeti', {
             }
         }
     },
+    slug: Sequelize.STRING,
     address: {
         type: Sequelize.STRING,
         allowNull: false,

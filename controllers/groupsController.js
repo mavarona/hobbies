@@ -50,7 +50,7 @@ exports.uploadImage = (req, res, next) => {
 
 exports.formNewGroup = async(req, res) => {
 
-    const categories = await Categories.findAll();
+    const categories = await Categories.findAll({});
 
     res.render('new-group', {
         namePage: 'Crear un nuevo grupo',
@@ -87,7 +87,7 @@ exports.formEditGroup = async(req, res) => {
 
     queries = [];
     queries.push(Groups.findByPk(req.params.groupId));
-    queries.push(Categories.findAll());
+    queries.push(Categories.findAll({}));
 
     const [group, categories] = await Promise.all(queries);
 

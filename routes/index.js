@@ -12,6 +12,7 @@ const groupController = require('../controllers/groupsController');
 const meetiController = require('../controllers/meetiController');
 
 module.exports = function() {
+    
     router.get('/', homeController.home);
 
     router.get('/create-account', userController.formCreateAccount);

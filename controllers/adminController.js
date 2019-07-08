@@ -18,8 +18,11 @@ exports.panelAdmin = async(req, res) => {
             userId: req.user.id,
             date: {
                 [Op.gte]: moment(new Date()).format("YYYY-MM-DD")
-            }
-        }
+            },
+        },
+        order: [
+            ['date', 'DESC']
+        ]
     }));
     queries.push(Meeti.findAll({
         where: {
