@@ -25,6 +25,7 @@ module.exports = function() {
 
     router.get('/login', userController.formLogin);
     router.post('/login', authController.authenticateUser);
+    router.get('/logout', authController.isAuthenticated ,authController.logout);
 
     router.get('/admin', authController.isAuthenticated, adminController.panelAdmin);
     router.get('/new-group', authController.isAuthenticated, groupController.formNewGroup);
@@ -64,7 +65,18 @@ module.exports = function() {
 
     router.get('/delete-meeti/:id', authController.isAuthenticated, meetiController.formDeleteMeeti);
     router.post('/delete-meeti/:id', authController.isAuthenticated, meetiController.deleteMeeti);
+    
+    router.get('/edit-profile', authController.isAuthenticated, userController.formEditProfile);
+    router.post('/edit-profile', authController.isAuthenticated,[
+        check('name').trim().escape(),
+        check('email').trim().escape()
+    ], userController.editProfile);
 
+    router.get('/change-password', authController.isAuthenticated, userController.formChangePassword);
+    router.post('/change-password', authController.isAuthenticated, userController.changePassword);
 
+    router.get('/image-profile', authController.isAuthenticated, userController.formImageProfile);
+    router.post('/image-profile', authController.isAuthenticated, userController.uploadImage ,userController.imageProfile);
+    
     return router;
 }

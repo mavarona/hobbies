@@ -1,0 +1,22 @@
+<main class="contenedor contenedor-formularios">
+    <h1><%= namePage %></h1>
+
+    <form class="default-form" method="POST" enctype="multipart/form-data">
+        <legend>Sube tu imagen que se mostrará junto a tu biografía</legend>
+        <div class="campo">
+            <label for="img">Imagen</label>
+            <input type="file" name="img">
+        </div>
+        <% if(user.img){ %>
+            <div class="campo">
+                <label>Imagen Actual</label>
+                <img src="/uploads/profiles/<%= user.img%>" width="200px">        
+            </div>
+        <% } else { %>
+            <p>No tiene imagen</p>
+        <% } %>
+        <div class="campo enviar">
+            <input type="submit" value="Subir Imagen" class="btn btn-rosa">
+        </div>
+    </form>
+</main>

@@ -8,9 +8,9 @@ multerConfig = {
     limits: {
         fileSize: 100000
     },
-    storage: fileStoraga = multer.diskStorage({
+    storage: fileStorage = multer.diskStorage({
         destination: (req, file, next) => {
-            next(null, __dirname + '/../public/uploads/groups');
+            next(null, __dirname + '/../public/uploads/groups/');
         },
         filename: (req, file, next) => {
             const extension = file.mimetype.split('/')[1];

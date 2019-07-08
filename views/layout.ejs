@@ -28,9 +28,11 @@
         </a>
 
         <nav class="nav">
-            <a href="#">Crear Grupo</a>
-            <a href="/login">Iniciar Sesión</a>
-            <a href="/create-account">Registrarse</a>
+            <% if(locals.user.id) { %>
+                <%- include partials/nav-auth.ejs %>
+            <% }else{ %>
+                <%- include partials/nav-notauth.ejs %>
+            <% } %>
         </nav>
     </header>
 
@@ -49,9 +51,11 @@
 
         <footer class="site-footer contenedor">
             <nav class="nav">
-                <a href="#">Crear Grupo</a>
-                <a href="/login">Iniciar Sesión</a>
-                <a href="/create-account">Registrarse</a>
+                <% if(locals.user.id) { %>
+                    <%- include partials/nav-auth.ejs %>
+                <% }else{ %>
+                    <%- include partials/nav-notauth.ejs %>
+                <% } %>
             </nav>
             <p class="copyright">
                 Todos los derechos reservados hobbies

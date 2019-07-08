@@ -84,7 +84,6 @@ function searchAddress(e) {
 }
 
 function fillReverseCoding(result) {
-    console.log(result.address.City);
     document.querySelector('#address').value = result.address.Address || '';
     document.querySelector('#city').value = result.address.City || '';
     document.querySelector('#state').value = result.address.Region || '';

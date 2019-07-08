@@ -13,3 +13,10 @@ exports.isAuthenticated = (req, res, next) => {
     }
     return res.redirect('/login');
 }
+
+exports.logout = (req, res, next) => {
+    req.logout();
+    req.flash('exito', 'Sesión cerrada correctamente');
+    res.redirect('/login');
+    next();
+}
