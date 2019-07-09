@@ -75,7 +75,10 @@
 <script src="https://unpkg.com/esri-leaflet-vector@2.0.2/dist/esri-leaflet-vector.js"
     integrity="sha512-keaVwrBxpBNq1XF5XEUvQ8NtoBbGPs/gKJJ3tp1qiudO3mTk9YEa6/uPpxX/G2HIjFrquj/xGg+p/c7nDp0wUg=="
     crossorigin=""></script>
-    <script src="/dist/bundle.js"></script>
+    <% if(user.id){ %>
+        <script src="/dist/bundle.js"></script>
+    <% } %>
+    <script src="/js/meeti.js"></script>
 </body>
 
 </html>

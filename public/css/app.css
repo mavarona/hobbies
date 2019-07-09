@@ -703,6 +703,7 @@ trix-toolbar .trix-button--icon-strike {
     padding: 2rem;
     border: 1px solid #C7C7C7;
     background-color: white;
+    min-width: 500px;
 }
 
 .comentario .texto p {
@@ -756,4 +757,13 @@ aside img {
     font-weight: bold;
     text-align: center;
     margin-bottom: 1rem;
+}
+
+.colorAuthor {
+    color: #068D9D
+}
+
+#ubicacion-meeti {
+    height: 400px !important;
+    width: 400px !important;
 }
