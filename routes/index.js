@@ -12,6 +12,7 @@ const groupController = require('../controllers/groupsController');
 const meetiController = require('../controllers/meetiController');
 const meetiControllerFE = require('../controllers/frontend/meetiControllerFE');
 const userControllerFE = require('../controllers/frontend/userControllerFE');
+const groupsControllerFE = require('../controllers/frontend/groupsControllerFE');
 
 module.exports = function() {
 
@@ -23,6 +24,7 @@ module.exports = function() {
     router.get('/interested/:slug', meetiControllerFE.showInterested);
 
     router.get('/users/:id', userControllerFE.showUser);
+    router.get('/groups/:id', groupsControllerFE.showGruop);
 
     router.get('/create-account', userController.formCreateAccount);
     router.post('/create-account', [

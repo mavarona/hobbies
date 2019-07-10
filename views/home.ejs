@@ -38,7 +38,11 @@
                         <div class="info-autor">
                             <% if(meeti.user.img) { %>
                                 <div class="imagen">
-                                    <img src="/uploads/profiles/<%= meeti.user.img %>">
+                                    <% if(meeti.group.img){ %>
+                                        <img src="/uploads/groups/<%= meeti.group.img %>">
+                                    <% } else { %>
+                                        <img src="/img/meeti.jpg %>">
+                                    <% } %>
                                 </div>
                             <% } else { %>
                                 <div class="imagen"></div>
