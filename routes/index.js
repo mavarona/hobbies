@@ -26,6 +26,8 @@ module.exports = function() {
     router.get('/users/:id', userControllerFE.showUser);
     router.get('/groups/:id', groupsControllerFE.showGruop);
 
+    router.get('/category/:category', meetiControllerFE.showCategory);
+
     router.get('/create-account', userController.formCreateAccount);
     router.post('/create-account', [
         check('repeatPassword').not().isEmpty().trim().escape().withMessage('El confirmar password no puede estar vacio'),
