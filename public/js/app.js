@@ -1,5 +1,9 @@
-import { OpenStreetMapProvider } from "leaflet-geosearch";
+import {
+    OpenStreetMapProvider
+} from "leaflet-geosearch";
 import openStreetMapProvider from "leaflet-geosearch/lib/providers/openStreetMapProvider";
+import assistance from './assistance.js';
+
 const lat = document.querySelector("#lat").value || 40.518306431151785;
 const lng = document.querySelector("#lng").value || -3.7778825438677845;
 const address = document.querySelector("#address").value || "";

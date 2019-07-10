@@ -767,3 +767,15 @@ aside img {
     height: 400px !important;
     width: 400px !important;
 }
+
+#message {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.imagenAssistance {
+    border-radius: 50%;
+    background-color: #e1e1e1;
+    height: 100px;
+    width: 100px;
+}

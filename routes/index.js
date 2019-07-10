@@ -11,12 +11,18 @@ const adminController = require('../controllers/adminController');
 const groupController = require('../controllers/groupsController');
 const meetiController = require('../controllers/meetiController');
 const meetiControllerFE = require('../controllers/frontend/meetiControllerFE');
+const userControllerFE = require('../controllers/frontend/userControllerFE');
 
 module.exports = function() {
-    
+
     router.get('/', homeController.home);
 
     router.get('/meeti/:slug', meetiControllerFE.showMeeti);
+    router.post('/confirm-assistance/:slug', meetiControllerFE.confirmAssistance);
+
+    router.get('/interested/:slug', meetiControllerFE.showInterested);
+
+    router.get('/users/:id', userControllerFE.showUser);
 
     router.get('/create-account', userController.formCreateAccount);
     router.post('/create-account', [
@@ -29,7 +35,7 @@ module.exports = function() {
 
     router.get('/login', userController.formLogin);
     router.post('/login', authController.authenticateUser);
-    router.get('/logout', authController.isAuthenticated ,authController.logout);
+    router.get('/logout', authController.isAuthenticated, authController.logout);
 
     router.get('/admin', authController.isAuthenticated, adminController.panelAdmin);
     router.get('/new-group', authController.isAuthenticated, groupController.formNewGroup);
@@ -69,9 +75,9 @@ module.exports = function() {
 
     router.get('/delete-meeti/:id', authController.isAuthenticated, meetiController.formDeleteMeeti);
     router.post('/delete-meeti/:id', authController.isAuthenticated, meetiController.deleteMeeti);
-    
+
     router.get('/edit-profile', authController.isAuthenticated, userController.formEditProfile);
-    router.post('/edit-profile', authController.isAuthenticated,[
+    router.post('/edit-profile', authController.isAuthenticated, [
         check('name').trim().escape(),
         check('email').trim().escape()
     ], userController.editProfile);
@@ -80,7 +86,7 @@ module.exports = function() {
     router.post('/change-password', authController.isAuthenticated, userController.changePassword);
 
     router.get('/image-profile', authController.isAuthenticated, userController.formImageProfile);
-    router.post('/image-profile', authController.isAuthenticated, userController.uploadImage ,userController.imageProfile);
-    
+    router.post('/image-profile', authController.isAuthenticated, userController.uploadImage, userController.imageProfile);
+
     return router;
 }

@@ -22,8 +22,20 @@
 
         <div class="pregunta-asistencia">
             <% if(user.id) { %>
-                <a>¿Asistirás?</a>
-                <a href="#" class="btn btn-azul">Si </a>
+                <% const exist = meeti.interested.includes(user.id) %>
+                <form action='/confirm-assistance/<%= meeti.slug %>' id="confirm-assistance">
+                    <p>¿Asistirás?</p>
+                    <% if(exist){ %>
+                        <input type="hidden" id="operation" value="cancel">
+                        <input type="submit" class="btn btn-rojo" value="Cancelar">
+                    <% } else { %>
+                        <input type="hidden" id="operation" value="confirm">
+                        <input type="submit" class="btn btn-azul" value="Si">
+                    <% } %>
+                    <div id="message"></div>
+                </form>
+            <% } else { %>
+                <p>Inicie Sesión para confirmar asistencia</p>
             <% } %>
         </div>
 
