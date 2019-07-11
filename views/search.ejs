@@ -1,0 +1,12 @@
+<div class="contenedor">
+    <h1><%= namePage %></h1>
+    <% if( meetis.length > 0) { %>
+        <div class="grid columnas-md-3 ">
+            <% meetis.forEach( meeti => { %>
+                <%- include partials/card-meeti.ejs %>
+            <% }) %>
+        </div>
+     <% } else { %>
+        <p>No Se encontraron resultados</p>
+      <% }%>
+</div>

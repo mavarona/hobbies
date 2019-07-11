@@ -13,7 +13,8 @@ const meetiController = require('../controllers/meetiController');
 const meetiControllerFE = require('../controllers/frontend/meetiControllerFE');
 const userControllerFE = require('../controllers/frontend/userControllerFE');
 const groupsControllerFE = require('../controllers/frontend/groupsControllerFE');
-const commentsControllerFE = require('../controllers/frontend/commentsControllerEF');
+const commentsControllerFE = require('../controllers/frontend/commentsControllerFE');
+const searchControllerFE = require('../controllers/frontend/searchControllerFE');
 
 module.exports = function() {
 
@@ -31,6 +32,8 @@ module.exports = function() {
     router.get('/groups/:id', groupsControllerFE.showGruop);
 
     router.get('/category/:category', meetiControllerFE.showCategory);
+
+    router.get('/search', searchControllerFE.resultSearch);
 
     router.get('/create-account', userController.formCreateAccount);
     router.post('/create-account', [

@@ -6,16 +6,24 @@
 <div class="buscador-inicio">
     <div class="contenedor">
         <h2>Busca un grupo en tu ciudad</h2>
-        <form action="#">
+        <form action="/search" method="GET">
             <select name="category">
-                <option value="" disabled selected>-- Selecciona Categoría --</option>
+                <option value="" selected>-- Todas --</option>
                 <% categories.forEach(category => { %>
                     <option value="<%= category.id %>"><%= category.name %></option>
                 <% }) %>  
             </select>
-            <input type="text" name="name" placeholder="Nombre Meeti">
+            <input type="text" name="title" placeholder="Título Meeti">
             <input type="text" name="city" placeholder="Ciudad">
-            <input type="text" name="country" placeholder="País">
+            <select name="country">
+                <option value="" selected>-- Todos --</option>
+                <option value="MEX">México</option>
+                <option value="COL">Colombia</option>
+                <option value="ARG">Argentina</option>
+                <option value="ESP">España</option>
+                <option value="USA">Estados Unidos</option>
+                <option value="PER">Perú</option>
+            </select>
             <input type="submit" value="Buscar" class="btn btn-rosa">
         </form>
     </div>
