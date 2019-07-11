@@ -2,6 +2,7 @@ const Meeti = require('../../models/Meeti');
 const Groups = require('../../models/Groups');
 const Users = require('../../models/Users');
 const Categories = require('../../models/Categories');
+const Comments = require('../../models/Comments');
 const moment = require('moment');
 const Sequelize = require('sequelize');
 
@@ -24,9 +25,18 @@ exports.showMeeti = async(req, res, next) => {
         res.redirect('/');
     }
 
+    const comments = await Comments.findAll({
+        where: { meetiId: meeti.id },
+        include: [{
+            model: Users,
+            attributes: ['id', 'name', 'img']
+        }]
+    });
+
     res.render('show-meeti', {
         namePage: meeti.title,
         meeti,
+        comments,
         moment
     })
 

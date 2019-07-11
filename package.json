@@ -33,6 +33,7 @@
         "sequelize": "^5.9.2",
         "shortid": "^2.2.14",
         "slug": "^1.1.0",
+        "sweetalert2": "^8.13.4",
         "uuid": "^3.3.2"
     },
     "devDependencies": {

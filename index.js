@@ -13,6 +13,7 @@ require('./models/Users');
 require('./models/Categories');
 require('./models/Groups');
 require('./models/Meeti');
+require('./models/Comments');
 db.sync().then(() => console.log('DB Connected')).catch((err) => console.log(err));
 
 require('dotenv').config({
@@ -46,7 +47,7 @@ app.use(passport.session());
 app.use(flash());
 
 app.use((req, res, next) => {
-    res.locals.user = {...req.user} || null;
+    res.locals.user = {...req.user } || null;
     res.locals.messages = req.flash();
     const date = new Date();
     res.locals.year = date.getFullYear();

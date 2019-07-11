@@ -13,6 +13,7 @@ const meetiController = require('../controllers/meetiController');
 const meetiControllerFE = require('../controllers/frontend/meetiControllerFE');
 const userControllerFE = require('../controllers/frontend/userControllerFE');
 const groupsControllerFE = require('../controllers/frontend/groupsControllerFE');
+const commentsControllerFE = require('../controllers/frontend/commentsControllerEF');
 
 module.exports = function() {
 
@@ -22,6 +23,9 @@ module.exports = function() {
     router.post('/confirm-assistance/:slug', meetiControllerFE.confirmAssistance);
 
     router.get('/interested/:slug', meetiControllerFE.showInterested);
+
+    router.post('/meeti/:id', commentsControllerFE.addComment);
+    router.post('/delete-comment', commentsControllerFE.deleteComment);
 
     router.get('/users/:id', userControllerFE.showUser);
     router.get('/groups/:id', groupsControllerFE.showGruop);

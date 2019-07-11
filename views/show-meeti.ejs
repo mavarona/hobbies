@@ -59,32 +59,48 @@
             </div>
             <div class="comentarios">
                 <h2>Comentarios</h2>
-                <div class="comentario">
-                    <div class="imagen"></div>
-                    <div class="texto">
-                        <p>Holahjgk lkhlhlh hlhhlhlhñlh gdjghkjglihñhñh hjlhlh</p>
-                        <p>Escrito por: <span class="colorAuthor">Juan de la torre</span></p>
-                        <input type="button" value="Eliminar" class="btn btn-azul">
+                <% if(comments.length > 0){  %>
+                <% comments.forEach( comment => {  %>
+                    <div class="comentario">
+                        <div class="imagen">
+                            <% if(comment.user.img) { %>
+                                <img src="/uploads/profiles/<%= comment.user.img %>">
+                            <% } %>
+                        </div>
+                        <div class="texto">
+                            <p><%= comment.message %></p>
+                            <p>Escrito por: 
+                                <a href="/users/<%= comment.user.id %>">
+                                    <%= comment.user.name %>
+                                </a>
+                            </p>
+                            <% if(comment.user.id === user.id  || meeti.userId === user.id ) { %>
+                                <form action="/delete-comment" method="POST" class="eliminar-comentario">
+                                    <input type="hidden" name="idComment" value="<%= comment.id %>" >
+                                    <input type="submit" value="Eliminar" class="btn btn-azul">
+                                </form>
+                            <% } %>
+                        </div>
                     </div>
-                </div>
-                <div class="comentario">
-                    <div class="imagen"></div>
-                    <div class="texto">
-                        <p>Dos</p>
-                        <p>Escrito por: <span class="colorAuthor">Pepe Sanchez</span></p>
-                    </div>
-                </div>
+                <% })  %>
+                <% } else {  %>
+                    <p>No hay comentarios aún</p>
+                <% } %>
             </div>
-            <form action="#" class="default-form comentarios">
-                <legend>Escr¡bir un comentario</legend>
-                <div class="campo">
-                    <label for="comentary">Comentario</label>
-                    <textarea name="comentary"></textarea>
-                </div>
-                <div class="campo enviar">
-                    <input type="submit" value="enviar" class="btn btn-rosa">
-                </div>
-            </form>
+            <% if(user.id){ %>
+                <form action="/meeti/<%= meeti.id %>" method="POST" class="default-form comentarios">
+                    <legend>Escr¡bir un comentario</legend>
+                    <div class="campo">
+                        <label for="comment">Comentario</label>
+                        <textarea name="comment"></textarea>
+                    </div>
+                    <div class="campo enviar">
+                        <input type="submit" value="enviar" class="btn btn-rosa">
+                    </div>
+                </form>
+            <% } else { %>
+                <p>Inicie sesión para añadir comentarios</p>
+            <% } %>
         </div>
 
         <aside class="informacion">
