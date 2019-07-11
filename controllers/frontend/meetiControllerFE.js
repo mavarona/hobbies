@@ -5,6 +5,7 @@ const Categories = require('../../models/Categories');
 const Comments = require('../../models/Comments');
 const moment = require('moment');
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 exports.showMeeti = async(req, res, next) => {
     const meeti = await Meeti.findOne({
@@ -25,6 +26,27 @@ exports.showMeeti = async(req, res, next) => {
         res.redirect('/');
     }
 
+    const geo = Sequelize.literal(`ST_GeomFromText( 'POINT( ${meeti.geo.coordinates[0]} ${meeti.geo.coordinates[1]} )', 4326 )`);
+
+    const distance = Sequelize.fn('ST_Distance', Sequelize.col('geo'), geo);
+
+    const nearMeetis = await Meeti.findAll({
+        order: distance,
+        where: Sequelize.where(distance, {
+            [Op.lte]: 2000
+        }),
+        limit: 3,
+        offset: 1,
+        include: [{
+                model: Groups
+            },
+            {
+                model: Users,
+                attributes: ['id', 'name', 'img']
+            }
+        ]
+    });
+
     const comments = await Comments.findAll({
         where: { meetiId: meeti.id },
         include: [{
@@ -37,6 +59,7 @@ exports.showMeeti = async(req, res, next) => {
         namePage: meeti.title,
         meeti,
         comments,
+        nearMeetis,
         moment
     })
 
