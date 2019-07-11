@@ -43,7 +43,6 @@ function deleteComment(e) {
                     this.parentElement.parentElement.remove();
 
                 }).catch(err => {
-                    console.log('errrrrrr', err.response);
                     if (err.response.status === 403 || err.response.status === 404) {
 
                         Swal.fire(
